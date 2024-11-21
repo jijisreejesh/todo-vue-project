@@ -130,7 +130,7 @@ section {
   padding: 20px;
   background-color: rgb(12, 111, 197);
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:450px){
 section{
   width: 100%;
 }

@@ -76,7 +76,7 @@ button:disabled{
 .itemBtn,#disabledBtn{
   box-shadow: 0px 0px 1px 1px rgb(207, 140, 14);
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:450px){
 #listItem{
   width:100px;
   font-size: x-large;

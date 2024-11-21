@@ -126,8 +126,11 @@ form input:focus{
   background-color: white;
   color: rgb(12, 12, 236);
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:450px){
   form{
+    width:100%;
+  }
+  h1{
     width:100%;
   }
 }
