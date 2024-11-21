@@ -14,14 +14,13 @@ watch(
     //console.log(newValue, OldValue);
     item.value = newValue;
     id.value=props.updateTodo.id;
-   // console.log(id.value);
   }
 );
 
 const emit = defineEmits(["save", "update"]);
 
 const add = () => {
-  if (props.updateTodo.item === "") {
+  if (props.updateTodo.item === ""){
     emit("save", item.value);
     item.value = "";
   }
@@ -32,6 +31,22 @@ const add = () => {
     item.value = "";
   }
 };
+// onUpdated(()=>{
+//   console.log("The component is updated");
+  
+// })
+// onMounted(()=>{
+//   console.log("The component is mounted");
+  
+// })
+// onBeforeUnmount(()=>{
+//   alert("The component is going to be unmounted");
+  
+// })
+// onBeforeUpdate(()=>{
+//  console.log("The component is going to be updated");
+  
+// })
 </script>
 
 <template>
@@ -111,4 +126,10 @@ form input:focus{
   background-color: white;
   color: rgb(12, 12, 236);
 }
+@media screen and (max-width:500px){
+  form{
+    width:100%;
+  }
+}
+
 </style>

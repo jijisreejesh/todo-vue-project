@@ -12,7 +12,7 @@ const deleteItem = () => {
 };
 const completeItem = () => {
   emit("complete", props.todo.id);
-  console.log(props.todo.completed);
+  //console.log(props.todo.completed);
 };
 const getItem=()=>{
    emit("get",props.todo.id)
@@ -46,18 +46,16 @@ const getItem=()=>{
 			height: 5rem;
 			margin-top: 8px;
       border-bottom: 1px solid yellowgreen;
+      display:flex;
+      align-items: center;
 }
 #listItem{
-  /* overflow: hidden;
-  text-overflow: clip; */
   font-size: xx-large;
   color : rgb(90, 235, 90);
   width: 200px; 
   display: inline-block;
 }
-/* #listItem:hover{
-  overflow:  visible;
-} */
+
 button{
   margin-right: 10px;
 }
@@ -74,11 +72,15 @@ button:disabled{
   background-color: grey;
   border: none;
 }
-/* button[disabled]:focus{
-  outline:none;
-} */
+
 .itemBtn,#disabledBtn{
   box-shadow: 0px 0px 1px 1px rgb(207, 140, 14);
+}
+@media screen and (max-width:500px){
+#listItem{
+  width:100px;
+  font-size: x-large;
+}
 }
 
 </style>
