@@ -8,13 +8,13 @@ const getItem = ref({
   id: "",
   item: "",
 });
-// onMounted(()=>{
-//   let retrievedData=localStorage.getItem('todosArray');
-//   todosArray.value=JSON.parse(retrievedData);
-//   console.log(todosArray.value);
+onMounted(()=>{
+  let retrievedData=localStorage.getItem('todosArray');
+  todosArray.value=JSON.parse(retrievedData);
+  console.log(todosArray.value);
   
   
-// })
+})
 const localStore=()=>{
   localStorage.setItem('todosArray',JSON.stringify(todosArray.value));
 }
