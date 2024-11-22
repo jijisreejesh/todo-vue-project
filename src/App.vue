@@ -1,18 +1,23 @@
 <script setup>
 import TodoListInput from "./components/TodoListInput.vue";
 import TodoListItem from "./components/TodoListItem.vue";
-
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 const todosArray = ref([]);
 const getItem = ref({
   id: "",
   item: "",
 });
-// const localStore=()=>{
-//   localStorage.setItem('todosArray',JSON.stringify(todosArray.value[i]));
-//   console.log("storage worked"+todosArray.value[i].item);
-// }
+onMounted(()=>{
+  let retrievedData=localStorage.getItem('todosArray');
+  todosArray.value=JSON.parse(retrievedData);
+  console.log(todosArray.value);
+  
+  
+})
+const localStore=()=>{
+  localStorage.setItem('todosArray',JSON.stringify(todosArray.value));
+}
 const save = (i) => {
   const todos = {
     id: "",
@@ -34,7 +39,11 @@ const save = (i) => {
       todos.id = getRandomNumber(0, 10000);
     }
     todosArray.value.push(todos);
-    //localStore();
+    if(todosArray.value.length!==0)
+    {
+      localStore();
+    }
+    
   }
 };
 
@@ -46,6 +55,8 @@ const deleteTodoItem = (i) => {
   let index = todosArray.value.indexOf(todoItemSearch);
   //console.log(index);
   todosArray.value.splice(index, 1);
+      localStore();
+    
 };
 
 const completeTodoItem = (i) => {
@@ -56,6 +67,7 @@ const completeTodoItem = (i) => {
   //console.log(completedItem);
   todosArray.value[index].completed = true;
   //console.log(todosArray.value)
+  localStore();
 };
 
 const getTodoItem = (i) => {
@@ -76,6 +88,8 @@ const updateTodoItem = (i, j) => {
   //console.log(index);
   todosArray.value[index].item = i;
   //console.log(todosArray.value[index].item, i);
+      localStore();
+    
 };
 </script>
 
