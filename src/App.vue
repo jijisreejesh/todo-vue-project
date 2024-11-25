@@ -150,7 +150,7 @@ body {
 ul {
   padding-right: 20px;
   padding-left: 20px;
-  max-height: 400px;
+  max-height: 500px;
   flex: 1;
   overflow-y: auto;
 }
