@@ -24,13 +24,16 @@ const add = () => {
     emit("save", item.value);
     item.value = "";
   }
-   else {
+   else{
     emit("update", item.value,id.value);
     //console.log(item.value);
     props.updateTodo.item = "";
     item.value = "";
   }
+
 };
+
+
 // onUpdated(()=>{
 //   console.log("The component is updated");
   
@@ -60,9 +63,11 @@ const add = () => {
     </button>
     <!-- <p> {{   updateTodo}}</p> -->
   </form>
+ 
 </template>
 
 <style>
+
 form{
   margin-top: 50px;
  width: 600px;

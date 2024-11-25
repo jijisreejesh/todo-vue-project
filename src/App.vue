@@ -8,16 +8,14 @@ const getItem = ref({
   id: "",
   item: "",
 });
-// onMounted(()=>{
-//   let retrievedData=localStorage.getItem('todosArray');
-//   todosArray.value=JSON.parse(retrievedData);
-//   console.log(todosArray.value);
-  
-  
-// })
-const localStore=()=>{
-  localStorage.setItem('todosArray',JSON.stringify(todosArray.value));
-}
+onMounted(() => {
+  let retrievedData = localStorage.getItem("todosArray");
+  todosArray.value = JSON.parse(retrievedData);
+  //console.log(todosArray.value);
+});
+const localStore = () => {
+  localStorage.setItem("todosArray", JSON.stringify(todosArray.value));
+};
 const save = (i) => {
   const todos = {
     id: "",
@@ -39,11 +37,9 @@ const save = (i) => {
       todos.id = getRandomNumber(0, 10000);
     }
     todosArray.value.push(todos);
-    if(todosArray.value.length!==0)
-    {
+    if (todosArray.value.length !== 0) {
       localStore();
     }
-    
   }
 };
 
@@ -55,8 +51,7 @@ const deleteTodoItem = (i) => {
   let index = todosArray.value.indexOf(todoItemSearch);
   //console.log(index);
   todosArray.value.splice(index, 1);
-      localStore();
-    
+  localStore();
 };
 
 const completeTodoItem = (i) => {
@@ -88,9 +83,20 @@ const updateTodoItem = (i, j) => {
   //console.log(index);
   todosArray.value[index].item = i;
   //console.log(todosArray.value[index].item, i);
-      localStore();
-    
+  localStore();
 };
+const completedTodoItem = () => {
+  let completedItem = [];
+  completedItem = todosArray.value.filter((todo) => {
+    return todo.completed === true;
+  });
+  todosArray.value = completedItem;
+  //console.log(todosArray.value);
+};
+const allTodoItem=()=>{
+  let retrievedData = localStorage.getItem("todosArray");
+  todosArray.value = JSON.parse(retrievedData);
+}
 </script>
 
 <template>
@@ -105,6 +111,10 @@ const updateTodoItem = (i, j) => {
   </ul> -->
     <section :style="`display:${todosArray.length ? 'block' : 'none'}`">
       <ul v-if="todosArray.length != 0">
+        <div id="completedTodos">
+          <button @click="completedTodoItem">Completed</button>
+          <button @click="allTodoItem" style="width: 60px;">All</button>
+        </div>
         <TodoListItem
           v-for="i in todosArray"
           :key="i.id"
@@ -127,7 +137,16 @@ const updateTodoItem = (i, j) => {
 body {
   background-color: rgb(5, 5, 70);
 }
-
+#completedTodos{
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 20px;;
+}
+#completedTodos button:hover{
+  background-color: red;
+}
 ul {
   padding-right: 20px;
   padding-left: 20px;
@@ -144,13 +163,13 @@ section {
   padding: 20px;
   background-color: rgb(12, 111, 197);
 }
-@media screen and (max-width:450px){
-section{
-  width: 100%;
-}
-ul{
-  width: 100%;
-  padding: 0px;
-}
+@media screen and (max-width: 450px) {
+  section {
+    width: 100%;
+  }
+  ul {
+    width: 100%;
+    padding: 0px;
+  }
 }
 </style>

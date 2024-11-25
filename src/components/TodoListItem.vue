@@ -54,8 +54,14 @@ const getItem=()=>{
   color : rgb(90, 235, 90);
   width: 200px; 
   display: inline-block;
+  overflow: hidden;
+  text-overflow: hidden;
+  padding-right: 10px;
 }
-
+#listItem:hover{
+overflow:visible;
+color:rgb(223, 14, 111)
+}
 button{
   margin-right: 10px;
 }
