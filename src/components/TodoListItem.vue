@@ -52,12 +52,9 @@ const getItem=()=>{
 #listItem{
   font-size: xx-large;
   color : rgb(90, 235, 90);
-  width: 200px; 
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: hidden;
-  width: 260px;
+  margin-right: 20px;
+  word-wrap: break-word;
+  width:350px;
 }
 #listItem:hover{
 /* overflow:visible;
