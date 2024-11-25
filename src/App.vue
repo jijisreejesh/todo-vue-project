@@ -97,6 +97,14 @@ const allTodoItem=()=>{
   let retrievedData = localStorage.getItem("todosArray");
   todosArray.value = JSON.parse(retrievedData);
 }
+const activeTodoItem = () => {
+  let activeItem = [];
+  activeItem = todosArray.value.filter((todo) => {
+    return todo.completed === false;
+  });
+  todosArray.value = activeItem;
+  //console.log(todosArray.value);
+};
 </script>
 
 <template>
@@ -114,6 +122,7 @@ const allTodoItem=()=>{
         <div id="completedTodos">
           <button @click="completedTodoItem">Completed</button>
           <button @click="allTodoItem" style="width: 60px;">All</button>
+          <button @click="activeTodoItem" style="width: 60px;">Active</button>
         </div>
         <TodoListItem
           v-for="i in todosArray"
@@ -138,11 +147,8 @@ body {
   background-color: rgb(5, 5, 70);
 }
 #completedTodos{
-  margin-left: auto;
-  margin-right: auto;
-  width: 200px;
-  margin-top: 10px;
-  margin-bottom: 20px;;
+  display: flex;
+  justify-content: center;
 }
 #completedTodos button:hover{
   background-color: red;
@@ -171,5 +177,9 @@ section {
     width: 100%;
     padding: 0px;
   }
+  #completedTodos{
+  justify-items: center;
+ 
+}
 }
 </style>
