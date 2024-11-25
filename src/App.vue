@@ -87,10 +87,16 @@ const updateTodoItem = (i, j) => {
 };
 const completedTodoItem = () => {
   let completedItem = [];
+  if(todosArray.value.length>0)
+{
+  let retrievedData = localStorage.getItem("todosArray");
+  todosArray.value = JSON.parse(retrievedData);
   completedItem = todosArray.value.filter((todo) => {
     return todo.completed === true;
   });
   todosArray.value = completedItem;
+}
+  
   //console.log(todosArray.value);
 };
 const allTodoItem=()=>{
@@ -99,11 +105,16 @@ const allTodoItem=()=>{
 }
 const activeTodoItem = () => {
   let activeItem = [];
+  if(todosArray.value.length>0)
+  {
+    let retrievedData = localStorage.getItem("todosArray");
+    todosArray.value = JSON.parse(retrievedData);
   activeItem = todosArray.value.filter((todo) => {
     return todo.completed === false;
   });
   todosArray.value = activeItem;
   //console.log(todosArray.value);
+}
 };
 </script>
 
