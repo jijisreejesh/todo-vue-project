@@ -85,6 +85,9 @@ button:disabled{
   width:100px;
   font-size: x-large;
 }
+#listItemContainer{
+  height:7rem;
+}
 }
 
 </style>
