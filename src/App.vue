@@ -10,7 +10,8 @@ const getItem = ref({
 });
 onMounted(() => {
   let retrievedData = localStorage.getItem("todosArray");
-  todosArray.value = JSON.parse(retrievedData);
+  //todosArray.value = JSON.parse(retrievedData);
+  todosArray.value = retrievedData ? JSON.parse(retrievedData) : [];
   //console.log(todosArray.value);
 });
 const localStore = () => {
